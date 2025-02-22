@@ -107,9 +107,9 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
 
 ### Raycast Snippet
 
-Use the following Raycast snippet to quickly generate a custom URL that will open your file:
+Use [this Raycast snippet](https://ray.so/snippets/shared?snippet=%7B%22name%22%3A%22Open%20File%20URL%20(from%20clipboard)%22%2C%22text%22%3A%22open%3A%5C%2F%5C%2F%7Bclipboard%20%7C%20percent-encode%7D%22%2C%22keyword%22%3A%22!of%22%7D) to quickly generate a custom URL that will open your file.
 
-This snippet uses the dynamic placeholder `{clipboard | percent-encode}` to convert your clipboard content into a percent-encoded file path, then prepends it with `open://`. Simply type `!of` in Raycast, paste your file path, and trigger it.
+This snippet uses the dynamic placeholder `{clipboard | percent-encode}` to convert your clipboard content into a percent-encoded file path, then prepends it with `open://`. Simply copy your file path, and type `!of`, and it will paste the `open://` url to automatically open that file path in the default app.
 
 ---
 
