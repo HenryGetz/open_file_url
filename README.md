@@ -8,13 +8,13 @@
 
 Deep linking files has long been a pet peeve of mine. I was sick of manually opening files from my Reminder app and other places, and solutions I found that cost money weren’t an option. **OpenURLHandler** offers a free, open-source solution that lets you seamlessly open any file via a custom URL scheme.
 
-
 > Before you look at install options, if you're concerned about security (which in our modern era, you should be!), I would recommend the build it yourself option, as that's the only way you can see exactly what's going on. 
 > 
 > The internet's a large place, and although *this* application is safe, this install process <u>should be a red flag</u> of *I could be accidentally installing malware.* Because, you know, this is basically the Apple equivalent of running a random .exe on Windows.
 > 
 > Carry on 😂
 
+---
 
 # Installing the App
 
@@ -25,24 +25,16 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
    **Note:** The `Open.zip` file contains the `Open.app` application.
 
 2. **Extract the .zip:**  
-   Unzip the downloaded `Open.zip` to extract `Open.app` (in Finder, left click → Open)
+   Unzip the downloaded `Open.zip` to extract `Open.app` (in Finder, left click → Open).
 
-1. **Move to Applications:**  
-    Copy `Open.app` to your `/Applications` folder:
-    
-    ```bash
-    cp -R /path/to/Open.app /Applications/
-    ```
-    
-4. **Optional: Grant Full Disk Access:**  
-    For a smoother experience without repeated permission prompts when opening files, consider giving `Open.app` full disk access:
-    
-    - Open **System Preferences** (or **System Settings** on newer macOS versions).
-    - Navigate to **Security & Privacy > Privacy > Full Disk Access**.
-    - Click the lock to make changes and add `Open.app` from your `/Applications` folder. _This step is optional but recommended if you frequently use the app, to minimize popups._
-5. **Bypass Gatekeeper (Unsigned App Warning):**  
-    Since the app isn’t signed (and notarization costs the money of a Apple Developer License this broke college student doesn't have), bypass the warning by:
-    
+3. **Move to Applications:**  
+   Copy `Open.app` to your `/Applications` folder:
+   ```bash
+   cp -R /path/to/Open.app /Applications/
+   ```
+
+1. **Bypass Gatekeeper (Unsigned App Warning):**  
+    Since the app isn’t signed (and notarization costs the money of an Apple Developer License this broke college student doesn't have), bypass the warning by:
     - **Right-click (or Control-click) on `Open.app` in Finder and select “Open”.**
     - Then click “Open” in the dialog that appears.
     - Alternatively, go to **System Preferences > Security & Privacy** and click “Open Anyway” for the app.
@@ -117,8 +109,6 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
 
 Use the following Raycast snippet to quickly generate a custom URL that will open your file:
 
-<iframe src="https://ray.so/snippets/shared?snippet=%7B%22name%22%3A%22Open%20File%20URL%20(from%20clipboard)%22%2C%22text%22%3A%22open%3A%5C%2F%5C%2F%7Bclipboard%20%7C%20percent-encode%7D%22%2C%22keyword%22%3A%22!of%22%7D" style="width:100%;aspect-ratio:2"></iframe>
-
 This snippet uses the dynamic placeholder `{clipboard | percent-encode}` to convert your clipboard content into a percent-encoded file path, then prepends it with `open://`. Simply type `!of` in Raycast, paste your file path, and trigger it.
 
 ---
@@ -150,3 +140,9 @@ Contributions, bug reports, and feature requests are welcome. Please feel free t
 # License
 
 This project is licensed under the MIT License – see the [LICENSE](https://chatgpt.com/LICENSE) file for details.
+
+---
+
+# Notes
+
+For a smoother experience without repeated permission prompts when opening files, consider giving `Open.app` full disk access. This step is optional but recommended if you frequently use the app (to minimize folder access notifications.)
