@@ -8,7 +8,6 @@
 
 Deep linking files has long been a pet peeve of mine. I was sick of manually opening files from my Reminder app and other places, and solutions I found that cost money weren’t an option. **OpenURLHandler** offers a free, open-source solution that lets you seamlessly open any file via a custom URL scheme.
 
----
 
 > Before you look at install options, if you're concerned about security (which in our modern era, you should be!), I would recommend the build it yourself option, as that's the only way you can see exactly what's going on. 
 > 
