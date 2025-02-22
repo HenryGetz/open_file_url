@@ -1,6 +1,6 @@
-# OpenURLHandler
+# OpenFileURL
 
-**OpenURLHandler** is an AppleScript-based custom URL handler for macOS that allows you to open files using a custom URL scheme (`open://`). Now, you can simply copy a file path and—using a Raycast snippet (triggered by `!of`)—generate a URL that automatically launches the given file.
+**OpenFileURL** is an AppleScript-based custom URL handler for macOS that allows you to open files using a custom URL scheme (`open://`). Now, you can simply copy a file path and—using a Raycast snippet (triggered by `!of`)—generate a URL that automatically launches the given file.
 
 ---
 
