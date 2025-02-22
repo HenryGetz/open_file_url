@@ -4,15 +4,22 @@
 
 ---
 
-## Why?
+# Why?
 
 Deep linking files has long been a pet peeve of mine. I was sick of manually opening files from my Reminder app and other places, and solutions I found that cost money weren’t an option. **OpenURLHandler** offers a free, open-source solution that lets you seamlessly open any file via a custom URL scheme.
 
 ---
 
-## Installing the App
+> Before you look at install options, if you're concerned about security (which in our modern era, you should be!), I would recommend the build it yourself option, as that's the only way you can see exactly what's going on. 
+> 
+> The internet's a large place, and although *this* application is safe, this install process <u>should be a red flag</u> of *I could be accidentally installing malware.* Because, you know, this is basically the Apple equivalent of running a random .exe on Windows.
+> 
+> Carry on 😂
 
-### Option 1: Use the Packaged App (as a .zip)
+
+# Installing the App
+
+## Option 1: Download the Packaged App (NOT RECOMMENDED)
 
 1. **Download the App:**  
    Clone or download the repository and locate the `Open.zip` file.  
@@ -33,15 +40,15 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
     
     - Open **System Preferences** (or **System Settings** on newer macOS versions).
     - Navigate to **Security & Privacy > Privacy > Full Disk Access**.
-    - Click the lock to make changes and add `Open.app` from your `/Applications` folder. _This step is optional but recommended if you frequently use the app._
+    - Click the lock to make changes and add `Open.app` from your `/Applications` folder. _This step is optional but recommended if you frequently use the app, to minimize popups._
 5. **Bypass Gatekeeper (Unsigned App Warning):**  
-    Since the app isn’t signed (and notarization costs money), bypass the warning by:
+    Since the app isn’t signed (and notarization costs the money of a Apple Developer License this broke college student doesn't have), bypass the warning by:
     
     - **Right-click (or Control-click) on `Open.app` in Finder and select “Open”.**
     - Then click “Open” in the dialog that appears.
     - Alternatively, go to **System Preferences > Security & Privacy** and click “Open Anyway” for the app.
 
-### Option 2: Build It Yourself
+## Option 2: Build It Yourself (RECOMMENDED)
 
 1. **Open Script Editor:**  
     Open **Script Editor** (located in `/Applications/Utilities`).
@@ -51,7 +58,7 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
     
     ```applescript
     on open location theURL
-        -- Toggle this variable to true to remove extraneous quotes from the decoded path,
+        -- Toggle this variable to true to remove extraneous quotes from the decoded path (Finder's default copy path format),
         -- or false to leave the path as-is.
         set parseFinder to true
     
@@ -76,10 +83,10 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
     ```
     
 3. **Save as an Application:**  
-    Go to **File > Export**, choose **File Format: Application**, name it (e.g., `OpenURLHandler.app`), and save it.
+    Go to **File > Export**, choose **File Format: Application**, name it (e.g., `Open.app`), and save it.
     
 4. **Edit the Info.plist:**  
-    To register the `open://` URL scheme, right-click your saved `.app` and choose **Show Package Contents**. Then, in `Contents/Info.plist`, add the following inside the main `<dict>`:
+    To register the `open://` URL scheme, right-click your saved `Open.app` and choose **Show Package Contents**. Then, in `Contents/Info.plist`, add the following inside the main `<dict>`:
     
     ```xml
         <key>CFBundleURLTypes</key>
@@ -99,23 +106,25 @@ Deep linking files has long been a pet peeve of mine. I was sick of manually ope
     Force macOS to recognize the new URL scheme by running:
     
     ```bash
-    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f /Applications/OpenURLHandler.app
+    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f /Applications/Open.app
     ```
     
 
 ---
 
-## Using the Custom URL Scheme with Raycast
+# Using the Custom URL Scheme with Raycast
 
 ### Raycast Snippet
 
 Use the following Raycast snippet to quickly generate a custom URL that will open your file:
 
+<iframe src="https://ray.so/snippets/shared?snippet=%7B%22name%22%3A%22Open%20File%20URL%20(from%20clipboard)%22%2C%22text%22%3A%22open%3A%5C%2F%5C%2F%7Bclipboard%20%7C%20percent-encode%7D%22%2C%22keyword%22%3A%22!of%22%7D" style="width:100%;aspect-ratio:2"></iframe>
+
 This snippet uses the dynamic placeholder `{clipboard | percent-encode}` to convert your clipboard content into a percent-encoded file path, then prepends it with `open://`. Simply type `!of` in Raycast, paste your file path, and trigger it.
 
 ---
 
-## How It Works
+# How It All Works
 
 - **Custom URL Scheme:**  
     The project registers a custom URL scheme (`open://`) with macOS. When a URL with this scheme is opened, macOS launches the corresponding application.
@@ -133,12 +142,12 @@ This snippet uses the dynamic placeholder `{clipboard | percent-encode}` to conv
 
 ---
 
-## Contributing
+# Contributing
 
 Contributions, bug reports, and feature requests are welcome. Please feel free to open an issue or submit a pull request.
 
 ---
 
-## License
+# License
 
 This project is licensed under the MIT License – see the [LICENSE](https://chatgpt.com/LICENSE) file for details.
